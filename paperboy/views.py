@@ -15,11 +15,11 @@ def deliver(request, id):
     return HttpResponseRedirect('/')
 
 def profile(request, id):
-    paperboy = Paperboy.objects.get(pk=id)
+    paperboy = get_object_or_404(Paperboy, id=id)
     context = {
         'name': paperboy.name,
         'experience': paperboy.experience,
         'earnings': paperboy.earnings,
         'paperboy': paperboy
-        }
+    }
     return render(request, 'profile.html', context)
