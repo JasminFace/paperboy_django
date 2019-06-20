@@ -13,3 +13,13 @@ def deliver(request, id):
     ad2 = request.POST['address2']
     pb.deliver(int(ad1), int(ad2))
     return HttpResponseRedirect('/')
+
+def profile(request, id):
+    paperboy = Paperboy.objects.get(pk=id)
+    context = {
+        'name': paperboy.name,
+        'experience': paperboy.experience,
+        'earnings': paperboy.earnings,
+        'paperboy': paperboy
+        }
+    return render(request, 'profile.html', context)

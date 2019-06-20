@@ -20,5 +20,6 @@ from paperboy import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
+    path('paperboy/<int:id>/', views.profile, name='profile'),
     path('paperboy/<int:id>/deliver/', views.deliver, name='deliver'),
 ]
